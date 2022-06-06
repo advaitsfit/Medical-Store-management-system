@@ -1,0 +1,129 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <!--Chart js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+    <title>Purchase Details</title>
+    <link rel="stylesheet" href="{% static 'pharma/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'pharma/css/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'pharma/css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+            integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/npm.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/script.js' %}"></script>
+
+    <script>
+        $(document).ready(function(){
+
+    
+            var ctx = document.getElementById("myChart").getContext('2d');
+            //ctx.backgroundColor=;
+
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["1",	"2","3","4","5","6","7","8","9","10","11","12"	],
+        datasets: [{
+            label: 'Last 12 Purchases', // Name the series
+            data: [{{purchase.0}},{{purchase.1}},{{purchase.2}},{{purchase.3}},{{purchase.4}},{{purchase.5}},{{purchase.6}},{{purchase.7}},{{purchase.8}},{{purchase.9}},{{purchase.10}},{{purchase.11}},{{purchase.12}}], // Specify the data values array
+            fill: false,
+            borderColor: '#2196f3', // Add custom color border (Line)
+            backgroundColor: '#FFFF', // Add custom color background (Points and Fill)
+            borderWidth: 1 // Specify bar border width
+        }]},
+    options: {
+      responsive: true, // Instruct chart js to respond nicely.
+      maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+    }
+});
+});
+
+      </script>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/pharma/" class="navbar-brand"><span
+                    class="glyphicon glyphicon glyphicon-home"></span>&nbsp;HOME</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#thisnav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="thisnav">
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dealer Management<b
+                        class="caret"></b></a>
+                    <ul id="dealer-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/pharma/dealerform/">Add Dealer Details</a></li>
+                        <li><a href="/pharma/dealertable/">View Dealer Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Medicine Management<b
+                        class="caret"></b></a>
+                    <ul id="med-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/pharma/medform/">Add Medicine Details</a></li>
+                        <li><a href="/pharma/medtable/">View Medicine Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Management<b
+                        class="caret"></b></a>
+                    <ul id="emp-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/pharma/empform/">Add Employee Details</a></li>
+                        <li><a href="/pharma/emptable/">View Employee Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Management<b
+                        class="caret"></b></a>
+                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/pharma/custform/">Add Customer Details</a></li>
+                        <li><a href="/pharma/custtable/">View Customer Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Purchase Information<b
+                        class="caret"></b></a>
+                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="/pharma/purchaseform/">New Purchase</a></li>
+                        <li><a href="/pharma/purchasetable/">View All Purchases</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-v4-grid-only@1.0.0/dist/bootstrap-grid.min.css">
+
+
+<div class="jumbotron" style="background:bisque;">
+    <canvas id="myChart" width="200" height="500" ></canvas>
+
+
+</div>
+  </body>
+</html>
